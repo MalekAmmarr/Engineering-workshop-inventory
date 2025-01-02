@@ -1,0 +1,9 @@
+body {
+    font-family: Arial, sans-serif;
+}
+table img {
+    width: 100px; /* Adjust the width */
+    height: 100px; /* Adjust the height */
+    object-fit: cover; /* Ensures the image maintains aspect ratio */
+    border-radius: 5px; /* Optional: adds rounded corners */
+}
