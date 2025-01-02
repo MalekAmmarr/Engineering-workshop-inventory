@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Equipment Dashboard</h1>
+
+        <!-- Search and Filter Section -->
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="nameFilter" class="form-label">Search by Name</label>
+                <input type="text" id="nameFilter" class="form-control" placeholder="Enter equipment name">
+            </div>
+            <div class="col-md-3">
+                <label for="categoryFilter" class="form-label">Filter by Category</label>
+                <select id="categoryFilter" class="form-select">
+                    <option value="">All Categories</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="statusFilter" class="form-label">Filter by Status</label>
+                <select id="statusFilter" class="form-select">
+                    <option value="">All Status</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="supplierFilter" class="form-label">Filter by Supplier</label>
+                <select id="supplierFilter" class="form-select">
+                    <option value="">All Suppliers</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Cart and Orders Buttons -->
+        <div class="mb-3 text-end">
+            <button class="btn btn-primary" onclick="viewCart()">View My Cart</button>
+            <button class="btn btn-secondary" onclick="viewOrders()">View My Orders</button>
+        </div>
+
+        <!-- Equipment Table -->
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Supplier</th>
+                <th>Rating</th>
+                <th>Model Number</th>
+                <th>Quantity</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="equipmentTable">
+            <!-- Dynamic rows will be populated here -->
+        </tbody>
+    </table>
+</div>
+
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Your Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="cartItems" class="list-group">
+                        <!-- Cart items will be populated here -->
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" onclick="placeOrder()">Place Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orders Modal -->
+    <div class="modal fade" id="ordersModal" tabindex="-1" aria-labelledby="ordersModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ordersModalLabel">My Orders</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="ordersModalContent" class="list-group">
+                        <!-- Orders will be populated here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rating Modal -->
+    <div class="modal fade" id="ratingModal" tabindex="-1" aria-labelledby="ratingModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ratingModalLabel">Rate Equipment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="ratingForm" onsubmit="submitRating(event)">
+                        <div class="mb-3">
+                            <label for="ratingScore" class="form-label">Rating (1-5)</label>
+                            <input type="number" id="ratingScore" class="form-control" min="1" max="5" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ratingComment" class="form-label">Comment</label>
+                            <textarea id="ratingComment" class="form-control" rows="3"></textarea>
+                        </div>
+                        <input type="hidden" id="ratingEquipmentId">
+                        <button type="submit" class="btn btn-primary">Submit Rating</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/dasboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

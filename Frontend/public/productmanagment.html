@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Equipment Management</h1>
+
+        <!-- Add Equipment Button -->
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addEquipmentModal">
+            Add Equipment
+        </button>
+
+        <!-- Equipment Table -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Model Number</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="equipmentTable">
+                    <!-- Dynamic rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Add Equipment Modal -->
+        <div class="modal fade" id="addEquipmentModal" tabindex="-1" aria-labelledby="addEquipmentModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addEquipmentModalLabel">Add Equipment</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addEquipmentForm" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="equipmentName">Name</label>
+                                <input type="text" id="equipmentName" class="form-control" required>
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="equipmentImage">Image</label>
+                                <input type="file" id="equipmentImage" class="form-control" required>
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="modelNumber">Model Number</label>
+                                <input type="text" id="modelNumber" class="form-control" required>
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="categoryId">Category Name</label>
+                                <input type="text" id="category_name" class="form-control" required>
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="supplierId">Supplier Name</label>
+                                <input type="text" id="supplier_name" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group mt-2">
+                                <label for="quantity">Quantity</label>
+                                <input type="number" id="quantity" class="form-control" required>
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="status">Status</label>
+                                <select id="status" class="form-select">
+                                    <option value="Available">Available</option>
+                                    <option value="In Use">In Use</option>
+                                    <option value="Out of Stock">Out of Stock</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-3">Add Equipment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Update Equipment Modal -->
+        <div class="modal fade" id="updateEquipmentModal" tabindex="-1" aria-labelledby="updateEquipmentModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateEquipmentModalLabel">Update Equipment</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="updateEquipmentForm">
+                            <input type="hidden" id="updateEquipmentId">
+                            <div class="form-group">
+                                <label for="updateEquipmentName">Name</label>
+                                <input type="text" id="updateEquipmentName" class="form-control" required>
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="updateModelNumber">Model Number</label>
+                                <input type="text" id="updateModelNumber" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group mt-2">
+                                <label for="updateQuantity">Quantity</label>
+                                <input type="number" id="updateQuantity" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group mt-2">
+                                <label for="updateStatus">Status</label>
+                                <select id="updateStatus" class="form-select">
+                                    <option value="Available">Available</option>
+                                    <option value="In Use">In Use</option>
+                                    <option value="Out of Stock">Out of Stock</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-3">Update Equipment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/productmanagment.js"></script>
+</body>
+</html>
